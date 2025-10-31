@@ -1,0 +1,1 @@
+# template-odoo-report-suite-galaxus
