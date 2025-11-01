@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="external_layout">
+   <!-- Resolve company safely -->
+    <t t-if="not o" t-set="o" t-value="doc"/>
+    <t t-if="not company">
+      <t t-if="company_id">
+        <t t-set="company" t-value="company_id"/>
+      </t>
+      <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+        <t t-set="company" t-value="o.company_id.sudo()"/>
+      </t>
+      <t t-else="">
+        <t t-set="company" t-value="res_company"/>
+      </t>
+    </t>
+
+    <!-- HEADER  -->
+    <div class="header" style="padding-top:11mm; padding-bottom:6mm; font-size:7pt;" t-translation="off">
+      <!-- HEADER TABLE (LOGO / ADDRESS / WEBSITE) -->
+      <table class="table table-borderless" style="width:100%; table-layout:fixed;">
+        <tr>
+          <td style="width:54%; text-align: left; padding-left: 0mm;">
+            <img t-if="company and company.logo" t-att-src="image_data_uri(company.logo)" style="height:10mm;"/>
+          </td>
+
+          <td style="width:24.5%; text-align: left;">
+            <div t-if="company">
+              <div t-if="company.name"><t t-esc="company.name"/></div>
+              <div>
+                <t t-if="company.street" t-esc="company.street"/>
+                <t t-if="company.street2"> <t t-esc="company.street2"/></t>
+              </div>
+              <div>
+                <t t-if="company.zip" t-esc="company.zip"/>
+                <t t-if="company.city"> <t t-esc="company.city"/></t>
+              </div>
+            </div>
+          </td>
+
+          <td style="width:21.5%; text-align: left;">
+            <div t-if="company">
+              <div t-if="company.website">
+                <t t-esc="(company.website or '').replace('https://','').replace('http://','').strip('/')"/>
+              </div>
+              <div t-if="company.phone">
+                <t t-esc="company.phone"/>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- PAGE WRAPPER (injects report body) -->
+    <div class="page" t-translation="off">
+      <t t-call="web.basic_layout">
+        <t t-out="0"/>
+      </t>
+    </div>
+
+
+    <!-- FOOTER -->
+    <div class="footer" style="font-size:7pt; display: none;">
+      <div style="height:5mm;" t-translation="off"/>
+      <div class="text-end page_number" style="font-size:9pt;">
+        <t t-translation="on">Page</t>
+        <span class="page"/>
+        <t t-translation="on">of</t>
+        <span class="topage"/>
+      </div>
+      <div style="border-top:1pt solid #888; margin-top:3mm;" t-translation="off"/>
+
+      <!-- Dynamic company footer (no hardcoded values) -->
+      <table class="table table-borderless" style="width:100%; margin-top:0mm; table-layout:fixed;">
+        <tr>
+          <!-- Column 1: Company name & address -->
+          <td style="width:35%; text-align:left; vertical-align:top; padding-right:0mm; padding-left:0mm;">
+            <t t-if="company.name"><span t-field="company.name"/></t>
+            <t t-if="company.street"><br/><span t-field="company.street"/></t>
+            <t t-if="company.street2"><br/><span t-field="company.street2"/></t>
+            <t t-if="company.zip or company.city">
+              <br/>
+              <span t-if="company.zip" t-field="company.zip"/>
+              <span t-if="company.city"> <t t-esc="company.city"/></span>
+            </t>
+            <t t-if="company.country_id"><br/><span t-field="company.country_id.name"/></t>
+          </td>
+
+          <!-- Column 2: Contact (phone/email/website) -->
+          <td style="width:22%; text-align:left; vertical-align:top; padding-right:0mm;">
+            <t t-if="company.phone">
+              <t t-translation="on">Phone</t><t t-translation="off">: </t><span t-field="company.phone"/><br/>
+            </t>
+            <t t-if="company.email">
+              <t t-translation="on">Email</t><t t-translation="off">: </t><span t-field="company.email"/><br/>
+            </t>
+            <t t-if="company.website">
+              <t t-translation="on">Website</t><t t-translation="off">: </t><span t-field="company.website"/>
+            </t>
+          </td>
+
+          <!-- Column 3: Bank (first account if any) -->
+          <td style="width:25%; text-align:left; vertical-align:top; padding-right:0mm;">
+            <t t-if="company.partner_id and company.partner_id.bank_ids">
+              <t t-set="bank" t-value="company.partner_id.bank_ids[0]"/>
+              <t t-if="bank.bank_id and bank.bank_id.name">
+                <span t-field="bank.bank_id.name"/><br/>
+              </t>
+              <t t-if="bank.acc_number">
+                <t t-translation="on">IBAN</t><t t-translation="off">: </t><t t-esc="bank.acc_number"/><br/>
+              </t>
+              <t t-if="bank.bank_id and bank.bank_id.bic">
+                <t t-translation="on">BIC</t><t t-translation="off">: </t><span t-field="bank.bank_id.bic"/>
+              </t>
+            </t>
+          </td>
+
+          <!-- Column 4: Legal (VAT / Registry) -->
+          <td style="width:18%; text-align:left; vertical-align:top; padding-right:0mm;">
+            <t t-if="company.vat">
+              <t t-translation="on">VAT</t><t t-translation="off">: </t><span t-field="company.vat"/><br/>
+            </t>
+            <t t-if="company.company_registry">
+              <t t-translation="on">Company Registry</t><t t-translation="off">: </t><span t-field="company.company_registry"/>
+            </t>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </template>
+</odoo>

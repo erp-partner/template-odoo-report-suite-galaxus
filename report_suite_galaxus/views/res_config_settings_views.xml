@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="view_report_suite_galaxus_res_config_settings_form" model="ir.ui.view">
+    <field name="name">res.config.settings.inherit.report.suite.basic</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//app[@name='general_settings']/div[@id='invite_users']" position="before">
+        <block title="Report Suite Settings" name="report_suite_galaxus_settings_block">
+
+          <block name="report_suite_galaxus_reports_block" title="">
+            <div style="background-color:#f2f2f2; border-radius:4px; margin:0 16px 8px 16px;">
+              <h3 style="font-size:14px; font-weight:600; color:#444; margin:0; line-height:1.3; padding:10px 0 10px 0;">
+                Reports
+              </h3>
+            </div>
+
+            <div class="alert alert-info" role="alert" style="margin: 0 16px 12px 16px;">
+              Select the <b>paper format</b> below. The template reports use this format and it is configured per company.
+            </div>
+
+            <setting id="report_suite_galaxus_paperformat"
+                     help="Select the paper format that will be applied to the template reports for this company.">
+              <field name="report_suite_paperformat_id" string="Paper Format"/>
+            </setting>
+
+            <div class="o_setting_full"/>
+
+            <setting id="report_suite_galaxus_use_sale_report"
+                     help="Use the custom Sale Order report templates instead of the default ones.">
+              <field name="report_suite_use_sale_report"/>
+            </setting>
+
+            <setting id="report_suite_galaxus_use_purchase_reports"
+                     help="Use the custom Purchase report templates instead of the default ones.">
+              <field name="report_suite_use_purchase_reports"/>
+            </setting>
+
+            <setting id="report_suite_galaxus_use_delivery_reports"
+                     help="Use the custom Delivery report templates instead of the default ones.">
+              <field name="report_suite_use_delivery_reports"/>
+            </setting>
+
+            <setting id="report_suite_galaxus_use_invoice_reports"
+                     help="Use the custom Invoice report templates instead of the default ones.">
+              <field name="report_suite_use_invoice_reports"/>
+            </setting>
+          </block>
+
+        </block>
+      </xpath>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Digitec Galaxus PDF Document Style</title>
+</head>
+<body style="margin:0;padding:0;background:#fafafa;color:#111;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
+
+  <div style="max-width:860px;margin:0 auto;padding:24px 16px;">
+
+    <div style="text-align:center;margin:12px 0 20px;">
+      <h2 style="margin:0 0 8px;">Digitec Galaxus PDF Document Style<</h2>
+      <h4 style="margin:0 0 4px;">Sales &#8226; Purchase &#8226; Delivery &#8226; Invoice</h4>
+      <p style="margin:4px 0;">
+        <a href="mailto:support@erp-partner.ch" style="color:#1a73e8;text-decoration:none;">support@erp-partner.ch</a>
+      </p>
+    </div>
+
+    <div class="card" style="background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:22px;margin:18px 0;">
+      <h3 style="margin:0 0 10px;">What you get</h3>
+      <ul style="margin:0 0 0 18px;padding:0;color:#222;line-height:1.6;">
+        <li><b>External layout</b> shared header and footer reused across all documents.</li>
+        <li><b>Sales reports</b> Quotation, Order Confirmation, Pro-forma (switchable).</li>
+        <li><b>Purchase reports</b> RFQ and Purchase Order (switchable).</li>
+        <li><b>Delivery Slip</b> switchable.</li>
+        <li><b>Invoice templates</b> switchable.</li>
+        <li><b>Optional paperformat</b> consistent margins and spacing.</li>
+        <li><b>Language-aware</b> respects partner language and QWeb translations.</li>
+        <li><b>Clean tables</b> SKU, quantities, VAT breakdowns, subtotals by section.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:22px;margin:18px 0;">
+      <h3 style="margin:0 0 10px;">How it works</h3>
+      <p style="margin:0 0 10px;color:#222;line-height:1.6;">Each standard Odoo report is inherited. When enabled in Settings, the Galaxus-style template replaces the default; disable to use Odoo’s standard template.</p>
+      <ul style="margin:0 0 10px 18px;padding:0;color:#222;line-height:1.6;">
+        <li>Sales/Pro-forma: <code>sale.report_saleorder_document</code></li>
+        <li>Purchase/RFQ: <code>purchase.report_purchaseorder_document</code>, <code>purchase.report_purchasequotation_document</code></li>
+        <li>Delivery: <code>stock.report_delivery_document</code></li>
+        <li>Invoice: <code>account.report_invoice_document</code></li>
+      </ul>
+      <p style="margin:0;color:#222;line-height:1.6;">Toggles in <b>Settings &gt; General Settings</b> via <code>ir.config_parameter</code> such as <code>report_suite_galaxus.use_sale_report</code>, <code>...use_purchase_reports</code>, <code>...use_delivery_reports</code>.</p>
+    </div>
+
+    <div class="card" style="background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:22px;margin:18px 0;">
+      <h3 style="margin:0 0 10px;">Configuration</h3>
+      <ol style="margin:0 0 0 18px;padding:0;color:#222;line-height:1.6;">
+        <li>Install the module.</li>
+        <li>Open <b>Settings &gt; General Settings</b> and enable the reports you want.</li>
+        <li>(Optional) Choose the provided paperformat to provide the correct page margins.</li>
+        <li>Print Sales, Purchase, Delivery, or Invoice to verify the new layout.</li>
+        <li>Field names can change in the same Odoo Version, contact me if you have errors during report printing.</li>
+      </ol>
+    </div>
+
+    <div class="card" style="background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:22px;margin:18px 0;">
+      <h3 style="margin:0 0 10px;">Compatibility</h3>
+      <p style="margin:0 0 8px;color:#222;line-height:1.6;">Tested on Odoo 18.0.</p>
+      <p style="margin:0;color:#222;line-height:1.6;">Depends on <code>sale</code>, <code>purchase</code>, <code>product</code>, <code>mail</code>, <code>account</code>, <code>stock</code>, <code>sale_stock</code>, <code>stock_delivery</code>.</p>
+    </div>
+
+    <div class="card" style="background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:22px;margin:18px 0;">
+      <h3 style="margin:0 0 10px;">Notes</h3>
+      <ul style="margin:0 0 0 18px;padding:0;color:#222;line-height:1.6;">
+        <li>“Digitec Galaxus” refers to a stylistic inspiration for document layout. This module is not affiliated with Digitec Galaxus AG.</li>
+        <li>Templates respect partner language; labels use QWeb <code>t-translation</code> correctly; symbols and units keep translation off.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="background:#fff;border:1px solid #e5e5e5;border-radius:12px;padding:22px;margin:18px 0;text-align:center;">
+      <h3 style="margin:0 0 10px;">Support</h3>
+      <p style="margin:0 0 6px;color:#222;">Author: Nathanael Lee — ERP-Partner</p>
+      <p style="margin:0;"><a href="mailto:support@erp-partner.ch" style="color:#1a73e8;text-decoration:none;">support@erp-partner.ch</a></p>
+    </div>
+
+  </div>
+</body>
+</html>

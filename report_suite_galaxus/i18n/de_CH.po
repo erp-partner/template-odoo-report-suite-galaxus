@@ -1,0 +1,702 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_suite_galaxus
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-21 19:06+0000\n"
+"PO-Revision-Date: 2025-10-21 21:09+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_CH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Amount Due"
+msgstr "Fälliger Betrag"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Amount due"
+msgstr "Betrag offen"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Amount excl."
+msgstr "Betrag exkl."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Amount incl."
+msgstr "Betrag inkl."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.external_layout
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "BIC"
+msgstr ""
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Bank payment"
+msgstr "Bankzahlung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Beneficiary"
+msgstr "Zugunsten von"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Cancelled Credit Note"
+msgstr "Stornierte Gutschrift"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Cancelled Invoice"
+msgstr "Stornierte Rechnung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.external_layout
+msgid "Company Registry"
+msgstr "Handelsregister"
+
+#. module: report_suite_galaxus
+#: model:ir.model,name:report_suite_galaxus.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfigurationseinstellungen"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Credit Note"
+msgstr "Gutschrift"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Credit Note Date"
+msgstr "Gutschriftsdatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Currency"
+msgstr "Währung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Customer Reference"
+msgstr "Auftragsreferenz"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Date"
+msgstr "Datum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+msgid "Delivered"
+msgstr "Geliefert"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Delivered Serial Numbers"
+msgstr "Gelieferte Seriennummern"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Delivery"
+msgstr "Lieferung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Delivery Address"
+msgstr "Lieferadresse"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "Delivery Date"
+msgstr "Lieferdatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Delivery Method"
+msgstr "Liefermethode"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+msgid "Delivery Note"
+msgstr "Lieferschein"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+msgid "Delivery Number"
+msgstr "Liefernummer"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Description"
+msgstr "Beschreibung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Draft Credit Note"
+msgstr "Entwurf Gutschrift"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Draft Invoice"
+msgstr "Rechnungsentwurf"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Due Date"
+msgstr "Fälligkeitsdatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.external_layout
+msgid "Email"
+msgstr "E-Mail"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "Expected arrival"
+msgstr "Erwartetes Lieferdatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Financial institution"
+msgstr "Finanzinstitut"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "General"
+msgstr "Allgemein"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.external_layout
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "IBAN"
+msgstr ""
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "Incoterms"
+msgstr ""
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Installment of"
+msgstr "Teilzahlung von"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Instructions"
+msgstr "Hinweis"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Invoice"
+msgstr "Rechnung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Invoice Date"
+msgstr "Rechnungsdatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Invoice Number"
+msgstr "Rechnungsnummer"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Options"
+msgstr "Optionen"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Order"
+msgstr "Bestellung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Order Confirmation"
+msgstr "Auftragsbestätigung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Order Date"
+msgstr "Auftragsdatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Order Number"
+msgstr "Bestellnummer"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+msgid "Ordered"
+msgstr "Bestellt"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "Our Contact Person"
+msgstr "Unser Kontakt"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Our General Terms and Conditions apply."
+msgstr "Es gelten unsere Allgemeinen Geschäftsbedingungen."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "PO Number"
+msgstr "Bestellnummer"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.external_layout
+msgid "Page"
+msgstr "Seite"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Paid on"
+msgstr "Bezahlt am"
+
+#. module: report_suite_galaxus
+#: model:ir.model.fields,field_description:report_suite_galaxus.field_res_config_settings__report_suite_paperformat_id
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.view_report_suite_galaxus_res_config_settings_form
+msgid "Paper Format"
+msgstr "Papierformat"
+
+#. module: report_suite_galaxus
+#: model:ir.model.fields,help:report_suite_galaxus.field_res_config_settings__report_suite_paperformat_id
+msgid "Paper format to apply to the report templates for this company."
+msgstr ""
+"Papierformat, das für die Berichtsvorlagen dieses Unternehmens verwendet "
+"wird."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Payment Method"
+msgstr "Zahlungsmethode"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Payment Terms"
+msgstr "Zahlungsbedingungen"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Payment reference"
+msgstr "Verwendungszweck"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "Payment terms"
+msgstr "Zahlungsbedingungen"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.external_layout
+msgid "Phone"
+msgstr "Telefon"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid ""
+"Please check the ordered products upon receipt for correctness, "
+"completeness, and any shipping damage. Any defects should be reported as "
+"soon as possible after receipt."
+msgstr ""
+"Bitte überprüfen Sie die bestellten Produkte nach Erhalt auf Richtigkeit, "
+"Vollständigkeit und Transportschäden. Eventuelle Mängel melden Sie bitte "
+"umgehend nach Erhalt."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Price excl."
+msgstr "Preis exkl."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Price incl."
+msgstr "Preis inkl."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Product"
+msgstr "Produkt"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Proforma Date"
+msgstr "Proforma-Datum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Proforma Invoice"
+msgstr "Proformarechnung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Proforma Number"
+msgstr "Proforma-Nummer"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "Purchase Order"
+msgstr "Bestellung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Quantity"
+msgstr "Menge"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Quotation"
+msgstr "Angebot"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Quotation Date"
+msgstr "Angebotsdatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Quotation Number"
+msgstr "Angebotsnummer"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "RFQ Date"
+msgstr "Anfragedatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "RFQ Number"
+msgstr "Anfragenummer"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Receipt Date"
+msgstr "Empfangsdatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "Reference"
+msgstr "Referenzbeleg"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+msgid "Remaining quantities not yet delivered"
+msgstr "Restliche Menge, noch nicht geliefert"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.view_report_suite_galaxus_res_config_settings_form
+msgid "Report Suite Settings"
+msgstr "Report Suite Einstellungen"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.view_report_suite_galaxus_res_config_settings_form
+msgid "Reports"
+msgstr "Berichte"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "Request for Quotation"
+msgstr "Angebotsanfrage"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Reversed on"
+msgstr "Erstellungsdatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "SKU"
+msgstr "Artikelnummer"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Scan this QR Code with"
+msgstr "Scannen Sie diesen QR Code mit"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.view_report_suite_galaxus_res_config_settings_form
+msgid ""
+"Select the <b>paper format</b> below. The template reports use this format "
+"and it is configured per company."
+msgstr ""
+"Wählen Sie das <b>Papierformat</b>. Alle benutzerdefinierten Berichte "
+"verwenden das gewählte Format."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.view_report_suite_galaxus_res_config_settings_form
+msgid ""
+"Select the paper format that will be applied to the template reports for "
+"this company."
+msgstr ""
+"Wählen Sie das Papierformat aus, das auf die Berichtsvorlagen dieses "
+"Unternehmens angewendet wird."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Serial Numbers"
+msgstr "Seriennummern"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Shipping"
+msgstr "Versand"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+msgid "Shipping Date"
+msgstr "Lieferdatum"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Subtotal"
+msgstr "Zwischensumme"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid ""
+"This document serves as your warranty certificate. For warranty claims, "
+"please contact our support team."
+msgstr ""
+"Dieses Dokument dient als Ihr Garantiebeleg. Bei Garantieansprüchen wenden "
+"Sie sich bitte an unser Support-Team."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Total Amount"
+msgstr "Gesamtbetrag"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Total amount contains following VAT"
+msgstr "Gesamtbetrag enthält folgende Mehrwertsteuer"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Total of all deliveries and services"
+msgstr "Total aller Lieferungen und Leistungen"
+
+#. module: report_suite_galaxus
+#: model:ir.model.fields,field_description:report_suite_galaxus.field_res_config_settings__report_suite_use_delivery_reports
+msgid "Use custom Delivery Reports"
+msgstr "Benutzerdefinierte Lieferberichte verwenden"
+
+#. module: report_suite_galaxus
+#: model:ir.model.fields,field_description:report_suite_galaxus.field_res_config_settings__report_suite_use_invoice_reports
+msgid "Use custom Invoice Reports"
+msgstr "Benutzerdefinierte Rechnungsberichte verwenden"
+
+#. module: report_suite_galaxus
+#: model:ir.model.fields,field_description:report_suite_galaxus.field_res_config_settings__report_suite_use_purchase_reports
+msgid "Use custom Purchase Reports"
+msgstr "Benutzerdefinierte Einkaufsberichte verwenden"
+
+#. module: report_suite_galaxus
+#: model:ir.model.fields,field_description:report_suite_galaxus.field_res_config_settings__report_suite_use_sale_report
+msgid "Use custom Sale Reports"
+msgstr "Benutzerdefinierte Verkaufsberichte verwenden"
+
+#. module: report_suite_galaxus
+#: model:ir.model.fields,help:report_suite_galaxus.field_res_config_settings__report_suite_use_delivery_reports
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.view_report_suite_galaxus_res_config_settings_form
+msgid "Use the custom Delivery report templates instead of the default ones."
+msgstr ""
+"Verwenden Sie die benutzerdefinierten Lieferscheinvorlagen anstelle der "
+"Standardvorlagen."
+
+#. module: report_suite_galaxus
+#: model:ir.model.fields,help:report_suite_galaxus.field_res_config_settings__report_suite_use_invoice_reports
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.view_report_suite_galaxus_res_config_settings_form
+msgid "Use the custom Invoice report templates instead of the default ones."
+msgstr ""
+"Verwenden Sie die benutzerdefinierten Rechnungsvorlagen anstelle der "
+"Standardvorlagen."
+
+#. module: report_suite_galaxus
+#: model:ir.model.fields,help:report_suite_galaxus.field_res_config_settings__report_suite_use_purchase_reports
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.view_report_suite_galaxus_res_config_settings_form
+msgid "Use the custom Purchase report templates instead of the default ones."
+msgstr ""
+"Verwenden Sie die benutzerdefinierten Einkaufsvorlagen anstelle der "
+"Standardvorlagen."
+
+#. module: report_suite_galaxus
+#: model:ir.model.fields,help:report_suite_galaxus.field_res_config_settings__report_suite_use_sale_report
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.view_report_suite_galaxus_res_config_settings_form
+msgid ""
+"Use the custom Sale Order report templates instead of the default ones."
+msgstr ""
+"Verwenden Sie die benutzerdefinierten Verkaufsauftragsvorlagen anstelle der "
+"Standardvorlagen."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.external_layout
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "VAT"
+msgstr "MwSt."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "VAT No. / VAT ID"
+msgstr "MwSt-Nr./USt-ID"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Valid until"
+msgstr "Gültig bis"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Vendor Bill"
+msgstr "Lieferantenrechnung"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "Vendor Credit Note"
+msgstr "Lieferantengutschrift"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Warranty"
+msgstr "Garantieleistungen"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.external_layout
+msgid "Website"
+msgstr ""
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid ""
+"You can use this information to pay via online banking or at the bank "
+"counter. Don’t forget to include the reference."
+msgstr ""
+"Sie können diese Informationen verwenden, um die Zahlung über Online-"
+"Banking oder am Bankschalter zu tätigen. Vergessen Sie nicht, die Referenz "
+"anzugeben."
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_saleorder_document
+msgid "Your Contact Person"
+msgstr "Ihr Kontakt"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchaseorder_document
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_purchasequotation_document
+msgid "Your Order Reference"
+msgstr "Ihre Bestellnummer"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "due if paid before"
+msgstr "fällig wenn bezahlt vor dem"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "due on"
+msgstr "fällig am"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.external_layout
+msgid "of"
+msgstr "von"
+
+#. module: report_suite_galaxus
+#: model_terms:ir.ui.view,arch_db:report_suite_galaxus.report_invoice_document
+msgid "your banking application"
+msgstr "ihrer E-Banking App"

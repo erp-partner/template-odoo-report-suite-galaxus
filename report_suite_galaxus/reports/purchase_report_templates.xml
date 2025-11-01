@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- INHERIT PURCHASE QUOTATION: inject template when enabled -->
+		<template id="report_purchasequotation_inherit_report_suite_galaxus"
+              inherit_id="purchase.report_purchasequotation">
+			<xpath expr="//t[@t-call='purchase.report_purchasequotation_document']" position="replace">
+				<t t-if="env['ir.config_parameter'].sudo().get_param('report_suite_galaxus.use_purchase_reports') == 'True'">
+					<t t-call="report_suite_galaxus.report_purchasequotation_document" t-lang="o.partner_id.lang"/></t>
+				<t t-else="">
+					<t t-call="purchase.report_purchasequotation_document" t-lang="o.partner_id.lang"/></t>
+			</xpath>
+		</template>
+		<!-- INHERIT PURCHASE ORDER: inject template when enabled -->
+		<template id="report_purchaseorder_inherit_report_suite_galaxus"
+              inherit_id="purchase.report_purchaseorder">
+			<xpath expr="//t[@t-call='purchase.report_purchaseorder_document']" position="replace">
+				<t t-if="env['ir.config_parameter'].sudo().get_param('report_suite_galaxus.use_purchase_reports') == 'True'">
+					<t t-call="report_suite_galaxus.report_purchaseorder_document" t-lang="o.partner_id.lang"/></t>
+				<t t-else="">
+					<t t-call="purchase.report_purchaseorder_document" t-lang="o.partner_id.lang"/></t>
+			</xpath>
+		</template>
+		<!-- GENERIC RFQ TEMPLATE -->
+		<template id="report_purchasequotation_document">
+			<t t-set="doc" t-value="o"/>
+			<t t-set="company" t-value="doc.company_id.sudo() or res_company"/>
+			<!-- HEADER & FOOTER VIA EXTERNAL LAYOUT -->
+			<t t-call="report_suite_galaxus.external_layout">
+				<div class="page" style="font-size:7pt;">
+					<!-- DOCUMENT TITLE -->
+					<div style="font-size:16pt; padding-top: 8mm; padding-left: 0mm;">
+						<span t-if="doc.state in ['draft','sent']">
+							<t t-translation="on">Request for Quotation</t>
+						</span>
+						<span t-else="">
+							<t t-translation="on">Purchase Order</t>
+						</span>
+						<span t-field="doc.name"/>
+					</div>
+					<!-- ADDRESS TABLE -->
+					<table class="table table-borderless" style="width:100%; margin-top:0mm; margin-bottom:5mm; table-layout:fixed; font-size:7pt;">
+						<tr>
+							<!-- DOCUMENT INFO (LEFT, ROWSPAN 2) -->
+							<td style="width:55.5%; vertical-align:top; padding-left:0mm;" rowspan="2">
+								<table class="table table-borderless" style="width:100%; table-layout:fixed;">
+									<!-- Number -->
+									<tr t-if="doc.name">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong t-if="doc.state in ['draft','sent']">
+												<t t-translation="on">RFQ Number</t>
+											</strong>
+											<strong t-else="">
+												<t t-translation="on">PO Number</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.name"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Date -->
+									<tr t-if="doc.date_order">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong t-if="doc.state in ['draft','sent']">
+												<t t-translation="on">RFQ Date</t>
+											</strong>
+											<strong t-else="">
+												<t t-translation="on">Order Date</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.date_order" t-options="{'widget':'date'}"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Delivery Date -->
+									<tr t-if="doc.state not in ['draft','sent'] and doc.date_planned">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Delivery Date</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.date_planned" t-options="{'widget':'date'}"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Incoterms -->
+									<tr t-if="doc.state not in ['draft','sent'] and doc.incoterm_id">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Incoterms</t>
+												<t t-translation="off">:</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<t t-esc="doc.incoterm_id.name or ''"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Vendor Reference -->
+									<tr t-if="doc.partner_ref">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Your Order Reference</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.partner_ref"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Our Contact Person -->
+									<tr t-if="doc.user_id">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Our Contact Person</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.user_id.name"/>
+											<br/>
+											<t t-if="doc.user_id.partner_id.email">
+												<span t-field="doc.user_id.partner_id.email"/>
+												<br/>
+											</t>
+											<t t-set="sp_phone" t-value="doc.user_id.partner_id.phone"/>
+											<t t-if="sp_phone">
+												<span t-esc="sp_phone"/>
+												<br/>
+											</t>
+										</td>
+									</tr>
+									<!-- Reference -->
+									<tr t-if="doc.origin">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Reference</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.origin"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Incoterms -->
+									<tr t-if="doc.incoterm_id">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Incoterms</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.incoterm_id.code"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Currency -->
+									<tr t-if="doc.currency_id and doc.state not in ['draft','sent']">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Currency</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.currency_id.name"/>
+											<br/>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<!--  Supplier Adress (TOP CENTER)  -->
+							<td style="width:24.5%; padding-left:0mm; padding-bottom:8mm; font-size: 8pt;">
+								<t t-set="vendor" t-value="doc.partner_id"/>
+								<t t-set="company_name" t-value="vendor.commercial_company_name or (vendor.parent_id and vendor.parent_id.name) or ''"/>
+								<!-- Company line -->
+								<t t-if="company_name">
+									<span t-esc="company_name"/>
+									<br/>
+								</t>
+								<!-- Contact line (only if different from company) -->
+								<t t-if="vendor.name and vendor.name != company_name">
+									<span t-esc="vendor.name"/>
+									<br/>
+								</t>
+								<!-- Street lines -->
+								<t t-if="vendor.street">
+									<span t-field="vendor.street"/>
+									<br/>
+								</t>
+								<t t-if="vendor.street2">
+									<span t-field="vendor.street2"/>
+									<br/>
+								</t>
+								<!-- ZIP / City -->
+								<t t-if="vendor.zip or vendor.city">
+									<span t-if="vendor.zip" t-field="vendor.zip"/>
+									<span t-if="vendor.city">
+										<t t-esc="vendor.city"/>
+									</span>
+									<br/>
+								</t>
+								<!-- Country -->
+								<t t-if="vendor.country_id">
+									<span t-field="vendor.country_id.name"/>
+									<br/>
+								</t>
+							</td>
+							<!-- SPACER DIV -->
+							<td style="width:20%; vertical-align:top; padding-left:0mm;"/>
+						</tr>
+						<tr>
+							<!-- DELIVERY ADDRESS (Dropship Address) (BOTTOM MIDDLE) -->
+							<td style="width:20%; vertical-align:top; padding-left:0mm; font-size: 7pt;">
+								<div style="margin-top:-3mm;">
+									<strong>
+										<t t-translation="on">Delivery Address</t>
+									</strong>
+									<br/>
+									<!-- Resolve delivery address: explicit dest -> warehouse partner -> company partner -->
+									<t t-set="ship" t-value="doc.dest_address_id                                     or (doc.picking_type_id and doc.picking_type_id.warehouse_id and doc.picking_type_id.warehouse_id.partner_id)                                     or doc.company_id.partner_id"/>
+									<t t-if="ship">
+										<!-- Company line -->
+										<t t-set="company_name" t-value="ship.commercial_company_name or (ship.parent_id and ship.parent_id.name) or ''"/>
+										<t t-if="company_name">
+											<span t-esc="company_name"/>
+											<br/>
+										</t>
+										<!-- Contact line (only if different) -->
+										<t t-if="ship.name and ship.name != company_name">
+											<span t-esc="ship.name"/>
+											<br/>
+										</t>
+										<!-- Street lines -->
+										<t t-if="ship.street">
+											<span t-field="ship.street"/>
+											<br/>
+										</t>
+										<t t-if="ship.street2">
+											<span t-field="ship.street2"/>
+											<br/>
+										</t>
+										<!-- ZIP / City -->
+										<t t-if="ship.zip or ship.city">
+											<span t-if="ship.zip" t-field="ship.zip"/>
+											<span t-if="ship.city">
+												<t t-esc="ship.city"/>
+											</span>
+											<br/>
+										</t>
+										<!-- Country -->
+										<t t-if="ship.country_id">
+											<span t-field="ship.country_id.name"/>
+											<br/>
+										</t>
+									</t>
+								</div>
+							</td>
+							<td/>
+						</tr>
+					</table>
+					<!-- PURCHASE LINES-->
+						<t t-set="lines" t-value="doc.order_line.sorted(key=lambda l: (-l.sequence, -l.id))"/>
+						<table class="table table-borderless" style="width:100%; font-size:7pt; margin-top:5mm; table-layout:fixed;">
+							<thead style="border-bottom:1px solid #ccc;">
+								<tr>
+									<!-- 1) Description -->
+									<th style="text-align:left; padding:1mm 4mm 1mm 0mm; width:55%;">
+										<span>
+											<t t-translation="on">Description</t>
+										</span>
+									</th>
+									<!-- 2) SKU -->
+									<th style="text-align:left; padding:1mm 1mm 1mm 0mm; width:15%;">
+										<span>
+											<t t-translation="on">SKU</t>
+										</span>
+									</th>
+									<!-- 3) Expected arrival-->
+									<th style="text-align:left; padding:1mm 1mm 1mm 0mm; width:20%;">
+										<span>
+											<t t-translation="on">Expected arrival</t>
+										</span>
+									</th>
+									<!-- 4) Qty + UoM -->
+									<th style="text-align:right; padding:1mm 0mm 1mm 0mm; width:10%;">
+										<span>
+											<t t-translation="on">Quantity</t>
+										</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<t t-foreach="lines" t-as="line">
+									<tr style="border-bottom:1px solid #ccc;">
+										<!-- STANDARD LINE -->
+										<t t-if="not line.display_type">
+											<!-- 1) Description -->
+											<td style="padding:1mm 4mm 1mm 0mm; text-align:left;">
+												<span t-if="line.name" t-field="line.name" t-options="{'widget':'text'}"/>
+											</td>
+											<!-- 2) SKU -->
+                        					<td style="padding:1mm 4mm 1mm 0mm; text-align:left;">
+                        						<t t-if="line.product_id">
+												<t t-esc="line.product_id.default_code or ''"/></t>
+                        					</td>
+											<!-- 3) Expected arrival (dd.mm.YYYY) -->
+											<td style="padding:1mm 1mm 1mm 0mm; text-align:left;">
+												<t t-set="arrive" t-value="line.date_planned and line.date_planned.date() or None"/>
+												<t t-if="arrive">
+													<t t-esc="arrive.strftime('%d.%m.%Y')"/></t>
+												<t t-else="">-</t>
+											</td>
+											<!-- 4) Quantity + UoM -->
+											<td style="padding:1mm 0mm 1mm 0mm; text-align:right; white-space:nowrap;">
+												<span t-out="line.product_qty or 0.0" t-options="{'widget':'float', 'precision': 0}"/>
+												<span t-if="line.product_uom" t-field="line.product_uom"/>
+											</td>
+										</t>
+										<!-- SECTION LINE -->
+										<t t-elif="line.display_type == 'line_section'">
+											<td colspan="3" style="padding:1mm 2mm 1mm 0mm; text-align:left;">
+												<strong>
+													<span t-if="line.name" t-field="line.name" t-options="{'widget':'text'}"/>
+												</strong>
+											</td>
+										</t>
+										<!-- NOTE LINE -->
+										<t t-elif="line.display_type == 'line_note'">
+											<td colspan="3" style="padding:1mm 2mm 1mm 0mm; text-align:left;">
+												<span t-if="line.name" t-field="line.name" t-options="{'widget':'text'}"/>
+											</td>
+										</t>
+									</tr>
+								</t>
+							</tbody>
+						</table>
+
+					<!-- INFORMATION BLOCK -->
+					<div style="font-size:7pt; margin-top:10mm;">
+						<table class="table table-borderless" style="table-layout: fixed; text-align: left;">
+							<!-- Payment Terms -->
+							<tr t-if="doc.payment_term_id">
+								<td style="width:15%; padding:1mm 1mm 1mm 0mm;">
+									<t t-translation="on">Payment Terms</t>
+								</td>
+								<td style="width:85%; padding:1mm 1mm 1mm 0mm;">
+									<!-- Name -->
+										<span t-field="doc.payment_term_id.name"/>
+								</td>
+							</tr>
+							<!-- TERMS AND CONDITIONS -->
+							<tr>
+								<td style="width: 15%; padding:1mm 1mm 1mm 0mm;">
+									<t t-translation="on">General</t>
+								</td>
+								<td style="width: 85%; padding:1mm 1mm 1mm 0mm;">
+									<t t-translation="on">Our General Terms and Conditions apply.</t>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</t>
+		</template>
+
+		<!-- GENERIC PURCHASE ORDER TEMPLATE -->
+		<template id="report_purchaseorder_document">
+			<t t-set="doc" t-value="o"/>
+			<t t-set="company" t-value="doc.company_id.sudo() or res_company"/>
+			<!-- HEADER & FOOTER VIA EXTERNAL LAYOUT -->
+			<t t-call="report_suite_galaxus.external_layout">
+				<div class="page" style="font-size:7pt;">
+					<!-- DOCUMENT TITLE -->
+					<div style="font-size:16pt; padding-top: 8mm; padding-left: 0mm;">
+						<span t-if="doc.state in ['draft','sent']">
+							<t t-translation="on">Request for Quotation</t>
+						</span>
+						<span t-else="">
+							<t t-translation="on">Purchase Order</t>
+						</span>
+						<span t-field="doc.name"/>
+					</div>
+					<!-- ADDRESS TABLE -->
+					<table class="table table-borderless" style="width:100%; margin-top:0mm; margin-bottom:5mm; table-layout:fixed; font-size:7pt;">
+						<tr>
+							<!-- DOCUMENT INFO (LEFT, ROWSPAN 2) -->
+							<td style="width:55.5%; vertical-align:top; padding-left:0mm;" rowspan="2">
+								<table class="table table-borderless" style="width:100%; table-layout:fixed;">
+									<!-- Number -->
+									<tr t-if="doc.name">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong t-if="doc.state in ['draft','sent']">
+												<t t-translation="on">RFQ Number</t>
+											</strong>
+											<strong t-else="">
+												<t t-translation="on">PO Number</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.name"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Date -->
+									<tr t-if="doc.date_order">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong t-if="doc.state in ['draft','sent']">
+												<t t-translation="on">RFQ Date</t>
+											</strong>
+											<strong t-else="">
+												<t t-translation="on">Order Date</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.date_order" t-options="{'widget':'date'}"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Delivery Date -->
+									<tr t-if="doc.state not in ['draft','sent'] and doc.date_planned">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Delivery Date</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.date_planned" t-options="{'widget':'date'}"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Incoterms -->
+									<tr t-if="doc.state not in ['draft','sent'] and doc.incoterm_id">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Incoterms</t>
+												<t t-translation="off">:</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<t t-esc="doc.incoterm_id.name or ''"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Vendor Reference -->
+									<tr t-if="doc.partner_ref">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Your Order Reference</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.partner_ref"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Our Contact Person -->
+									<tr t-if="doc.user_id">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Our Contact Person</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.user_id.name"/>
+											<br/>
+											<t t-if="doc.user_id.partner_id.email">
+												<span t-field="doc.user_id.partner_id.email"/>
+												<br/>
+											</t>
+											<t t-set="sp_phone" t-value="doc.user_id.partner_id.phone"/>
+											<t t-if="sp_phone">
+												<span t-esc="sp_phone"/>
+												<br/>
+											</t>
+										</td>
+									</tr>
+									<!-- Reference -->
+									<tr t-if="doc.origin">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Reference</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.origin"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Incoterms -->
+									<tr t-if="doc.incoterm_id">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Incoterms</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.incoterm_id.code"/>
+											<br/>
+										</td>
+									</tr>
+									<!-- Currency -->
+									<tr t-if="doc.currency_id and doc.state not in ['draft','sent']">
+										<td style="width:35%; vertical-align:top; padding:0mm;">
+											<strong>
+												<t t-translation="on">Currency</t>
+											</strong>
+										</td>
+										<td style="width:65%; vertical-align:top; padding:0mm;">
+											<span t-field="doc.currency_id.name"/>
+											<br/>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<!--  Supplier Adress (TOP CENTER)  -->
+							<td style="width:24.5%; padding-left:0mm; padding-bottom:8mm; font-size: 8pt;">
+								<t t-set="vendor" t-value="doc.partner_id"/>
+								<t t-set="company_name" t-value="vendor.commercial_company_name or (vendor.parent_id and vendor.parent_id.name) or ''"/>
+								<!-- Company line -->
+								<t t-if="company_name">
+									<span t-esc="company_name"/>
+									<br/>
+								</t>
+								<!-- Contact line (only if different from company) -->
+								<t t-if="vendor.name and vendor.name != company_name">
+									<span t-esc="vendor.name"/>
+									<br/>
+								</t>
+								<!-- Street lines -->
+								<t t-if="vendor.street">
+									<span t-field="vendor.street"/>
+									<br/>
+								</t>
+								<t t-if="vendor.street2">
+									<span t-field="vendor.street2"/>
+									<br/>
+								</t>
+								<!-- ZIP / City -->
+								<t t-if="vendor.zip or vendor.city">
+									<span t-if="vendor.zip" t-field="vendor.zip"/>
+									<span t-if="vendor.city">
+										<t t-esc="vendor.city"/>
+									</span>
+									<br/>
+								</t>
+								<!-- Country -->
+								<t t-if="vendor.country_id">
+									<span t-field="vendor.country_id.name"/>
+									<br/>
+								</t>
+							</td>
+							<!-- SPACER DIV -->
+							<td style="width:20%; vertical-align:top; padding-left:0mm;"/>
+						</tr>
+						<tr>
+							<!-- DELIVERY ADDRESS (Dropship Address) (BOTTOM MIDDLE) -->
+							<td style="width:20%; vertical-align:top; padding-left:0mm; font-size: 7pt;">
+								<div style="margin-top:-3mm;">
+									<strong>
+										<t t-translation="on">Delivery Address</t>
+									</strong>
+									<br/>
+									<!-- Resolve delivery address: explicit dest -> warehouse partner -> company partner -->
+									<t t-set="ship" t-value="doc.dest_address_id                                     or (doc.picking_type_id and doc.picking_type_id.warehouse_id and doc.picking_type_id.warehouse_id.partner_id)                                     or doc.company_id.partner_id"/>
+									<t t-if="ship">
+										<!-- Company line -->
+										<t t-set="company_name" t-value="ship.commercial_company_name or (ship.parent_id and ship.parent_id.name) or ''"/>
+										<t t-if="company_name">
+											<span t-esc="company_name"/>
+											<br/>
+										</t>
+										<!-- Contact line (only if different) -->
+										<t t-if="ship.name and ship.name != company_name">
+											<span t-esc="ship.name"/>
+											<br/>
+										</t>
+										<!-- Street lines -->
+										<t t-if="ship.street">
+											<span t-field="ship.street"/>
+											<br/>
+										</t>
+										<t t-if="ship.street2">
+											<span t-field="ship.street2"/>
+											<br/>
+										</t>
+										<!-- ZIP / City -->
+										<t t-if="ship.zip or ship.city">
+											<span t-if="ship.zip" t-field="ship.zip"/>
+											<span t-if="ship.city">
+												<t t-esc="ship.city"/>
+											</span>
+											<br/>
+										</t>
+										<!-- Country -->
+										<t t-if="ship.country_id">
+											<span t-field="ship.country_id.name"/>
+											<br/>
+										</t>
+									</t>
+								</div>
+							</td>
+							<td/>
+						</tr>
+					</table>
+
+					<!-- PURCHASE LINES  -->
+						<t t-set="lines_to_report" t-value="doc.order_line"/>
+						<table class="table table-borderless" style="width:100%; font-size:7pt; margin-top: 5mm; table-layout:fixed;">
+							<thead style="border-bottom:1px solid #ccc;">
+								<tr>
+									<!-- 1) Description -->
+									<th style="text-align:left; padding:1mm 4mm 1mm 0mm; width:34%;">
+										<span>
+											<t t-translation="on">Description</t>
+										</span>
+									</th>
+									<!-- 2) SKU-->
+									<th style="text-align:left; padding:1mm 1mm 1mm 0mm; width:12%;">
+										<span>
+											<t t-translation="on">SKU</t>
+										</span>
+									</th>
+									<!-- 3) Quantity -->
+									<th style="text-align:right; padding:1mm 1mm 1mm 0mm; width:8%;">
+										<span>
+											<t t-translation="on">Quantity</t>
+										</span>
+									</th>
+									<!-- 4) VAT % -->
+									<th style="text-align:right; padding:1mm 1mm 1mm 0mm; width:8%;">
+										<span>
+											<t t-translation="on">VAT</t>
+										</span>
+									</th>
+									<!-- 5) Unit Price excl. VAT -->
+									<th style="text-align:right; padding:1mm 1mm 1mm 0mm; width:9%;">
+										<span>
+											<t t-translation="on">Price excl.</t>
+										</span>
+									</th>
+									<!-- 6) Unit Price incl. VAT -->
+									<th style="text-align:right; padding:1mm 1mm 1mm 0mm; width:9%;">
+										<span>
+											<t t-translation="on">Price incl.</t>
+										</span>
+									</th>
+									<!-- 7) Amount excl. VAT -->
+									<th style="text-align:right; padding:1mm 1mm 1mm 0mm; width:10%;">
+										<span>
+											<t t-translation="on">Amount excl.</t>
+										</span>
+									</th>
+									<!-- 8) Amount incl. VAT -->
+									<th style="text-align:right; padding:1mm 0mm 1mm 0mm; width:10%;">
+										<span>
+											<t t-translation="on">Amount incl.</t>
+										</span>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<t t-set="current_section" t-value="False"/>
+								<t t-set="current_subtotal" t-value="0"/>
+								<t t-set="current_subtotal_incl" t-value="0"/>
+								<t t-foreach="lines_to_report" t-as="line">
+									<!-- accumulate for section totals -->
+									<t t-set="current_subtotal" t-value="current_subtotal + (line.price_subtotal or 0.0)"/>
+									<t t-set="current_subtotal_incl" t-value="current_subtotal_incl + (line.price_total or 0.0)"/>
+									<tr t-att-style="'border-bottom:1px solid %s;' % ('#000' if (line_last and not current_section) else '#ccc')">
+										<!-- PRODUCT LINE -->
+										<t t-if="not line.display_type">
+											<!-- 1) Description -->
+											<td style="padding:1mm 4mm 1mm 0mm; text-align:left;">
+												<span t-if="line.name" t-field="line.name" t-options="{'widget':'text'}"/>
+											</td>
+											<!-- 2) SKU -->
+											<td style="padding:1mm 4mm 1mm 0mm; text-align:left;">
+                        						<t t-if="line.product_id">
+												<t t-esc="line.product_id.default_code or ''"/></t>
+                        					</td>
+											<!-- 3) Quantity -->
+											<td style="padding:1mm 0mm 1mm 0mm; text-align:right; white-space:nowrap;">
+												<span t-out="line.product_qty or 0.0" t-options="{'widget':'float', 'precision': 0}"/>
+												<span t-if="line.product_uom" t-field="line.product_uom"/>
+											</td>
+											<!-- 4) VAT % -->
+											<t t-set="vat_rates_list" t-value="[tax.amount                   for tx in line.taxes_id                   for tax in (tx.children_tax_ids or [tx])                   if tax.amount_type == 'percent']"/>
+											<td style="padding:1mm 1mm 1mm 0mm; text-align:right;">
+												<t t-if="vat_rates_list">
+													<t t-foreach="vat_rates_list" t-as="rate">
+														<span t-out="rate" t-options="{'widget':'float','precision': 1}"/>
+														<t t-translation="off">%</t>
+														<t t-if="not rate_last">, </t>
+													</t>
+												</t>
+												<t t-else="">-</t>
+											</td>
+											<!-- 5) Unit Price excl. -->
+											<td style="padding:1mm 1mm 1mm 0mm; text-align:right;">
+												<t t-if="line.product_qty">
+													<span t-out="(line.price_subtotal or 0.0) / line.product_qty" t-options="{'widget':'float', 'precision': (doc.currency_id.decimal_places or 2)}"/>
+												</t>
+												<t t-else="">-</t>
+											</td>
+											<!-- 6) Unit Price incl. -->
+											<td style="padding:1mm 1mm 1mm 0mm; text-align:right;">
+												<t t-if="line.product_qty">
+													<span t-out="(line.price_total or 0.0) / line.product_qty" t-options="{'widget':'float', 'precision': (doc.currency_id.decimal_places or 2)}"/>
+												</t>
+												<t t-else="">-</t>
+											</td>
+											<!-- 7) Amount excl. -->
+											<td style="padding:1mm 1mm 1mm 0mm; text-align:right;">
+												<span t-out="line.price_subtotal or 0.0" t-options="{'widget':'float', 'precision': (doc.currency_id.decimal_places or 2)}"/>
+											</td>
+											<!-- 8) Amount incl. -->
+											<td style="padding:1mm 0mm 1mm 0mm; text-align:right;">
+												<span t-out="line.price_total or 0.0" t-options="{'widget':'float', 'precision': (doc.currency_id.decimal_places or 2)}"/>
+											</td>
+										</t>
+										<!-- SECTION LINE -->
+										<t t-elif="line.display_type == 'line_section'">
+											<td style="padding:1mm 2mm 1mm 0mm; text-align:left;">
+												<strong>
+													<span t-if="line.name" t-field="line.name" t-options="{'widget':'text'}"/>
+												</strong>
+											</td>
+											<td colspan="7"/>
+											<t t-set="current_section" t-value="line"/>
+											<t t-set="current_subtotal" t-value="0"/>
+											<t t-set="current_subtotal_incl" t-value="0"/></t>
+										<!-- NOTE LINE -->
+										<t t-elif="line.display_type == 'line_note'">
+											<td style="padding:1mm 2mm 1mm 0mm; text-align:left;">
+												<span t-if="line.name" t-field="line.name" t-options="{'widget':'text'}"/>
+											</td>
+											<td colspan="7"/>
+										</t>
+									</tr>
+									<!-- SECTION SUBTOTAL -->
+									<t t-if="current_section and (line_last or lines_to_report[line_index+1].display_type == 'line_section')">
+										<tr t-att-style="'border-bottom:1px solid %s;' % ('#000' if line_last else '#ccc')">
+											<!-- col 1: label -->
+											<td style="padding:1mm 2mm 1mm 0mm; text-align:left;">
+												<strong>
+													<t t-translation="on">Subtotal</t>
+												</strong>
+											</td>
+											<!-- cols 2–7: spacer -->
+											<td colspan="5"/>
+											<!-- col 8: excl. VAT -->
+											<td style="padding:1mm 1mm 1mm 0mm; text-align:right;">
+												<span t-out="current_subtotal or 0.0" t-options="{'widget':'float', 'precision': (doc.currency_id.decimal_places or 2)}"/>
+											</td>
+											<!-- col 9: incl. VAT -->
+											<td style="padding:1mm 0mm 1mm 0mm; text-align:right;">
+												<span t-out="current_subtotal_incl or 0.0" t-options="{'widget':'float', 'precision': (doc.currency_id.decimal_places or 2)}"/>
+											</td>
+										</tr>
+										<t t-set="current_section" t-value="False"/></t>
+								</t>
+							</tbody>
+							<!-- SUMMARY ROWS  -->
+							<t t-set="vat_pct" t-value="(doc.amount_tax / doc.amount_untaxed * 100.0) if doc.amount_untaxed else 0.0"/>
+							<t t-set="dec" t-value="doc.currency_id.decimal_places or 2"/>
+							<tr style="border-top:1px solid #ccc; page-break-inside: avoid;">
+								<td/>
+								<td/>
+								<td colspan="4" style="padding:1mm 1mm 1mm 0mm; text-align:left;">
+									<t t-translation="on">Total Amount</t>
+								</td>
+								<td style="padding:1mm 1mm 1mm 0mm; text-align:right; white-space:nowrap;">
+									<span t-out="doc.amount_untaxed or 0.0" t-options="{'widget':'float', 'precision': dec}"/>
+								</td>
+								<td style="padding:1mm 0mm 1mm 0mm; text-align:right; white-space:nowrap;">
+									<span t-out="doc.amount_total or 0.0" t-options="{'widget':'float', 'precision': dec}"/>
+								</td>
+							</tr>
+							<tr style="page-break-inside: avoid;">
+								<td/>
+								<td/>
+								<td colspan="6" style="padding:1mm 1mm 0.5mm 0mm; border-bottom:1px solid #000; text-align:left;">
+									<t t-translation="on">Total amount contains following VAT</t>
+									<t t-translation="off">:</t>
+								</td>
+							</tr>
+							<tr style="page-break-inside: avoid;">
+								<td/>
+								<td/>
+								<td colspan="2" style="padding:0.5mm 1mm 4mm 0mm; border-bottom:1px solid #000; text-align:left;">
+									<t t-translation="on">VAT</t>
+									<span t-out="vat_pct or 0.0" t-options="{'widget':'float','precision': 1}"/>
+									<t t-translation="off">%</t>
+								</td>
+								<td colspan="3" style="border-bottom:1px solid #000;"/>
+								<td style="padding:0.5mm 0mm 4mm 0mm; border-bottom:1px solid #000; text-align:right; white-space:nowrap;">
+									<span t-out="doc.amount_tax or 0.0" t-options="{'widget':'float', 'precision': dec}"/>
+								</td>
+							</tr>
+							<tr style="page-break-inside: avoid;">
+								<td/>
+								<td/>
+								<td colspan="4" style="padding:1mm 1mm 1mm 0mm; border-bottom:1px solid #ccc; text-align:left;">
+									<span>
+										<t t-translation="on">Total of all deliveries and services</t>
+										<t t-translation="off"/>
+										<t t-esc="(doc.currency_id and doc.currency_id.name) or ''" t-translation="off"/>
+									</span>
+								</td>
+								<td style="border-bottom:1px solid #ccc;"/>
+								<td style="padding:1mm 0mm 1mm 0mm; border-bottom:1px solid #ccc; text-align:right; white-space:nowrap;">
+									<span t-out="doc.amount_total or 0.0" t-options="{'widget':'float', 'precision': dec}"/>
+								</td>
+							</tr>
+						</table>
+					<!-- INFORMATION BLOCK -->
+					<div style="font-size:7pt; margin-top:10mm;">
+						<table class="table table-borderless" style="table-layout: fixed; text-align: left;">
+							<!-- Payment Terms -->
+							<tr t-if="doc.payment_term_id">
+								<td style="width:15%; padding:1mm 1mm 1mm 0mm;">
+									<t t-translation="on">Payment Terms</t>
+								</td>
+								<td style="width:85%; padding:1mm 1mm 1mm 0mm;">
+									<!-- Name -->
+										<span t-field="doc.payment_term_id.name"/>
+								</td>
+							</tr>
+							<!-- TERMS AND CONDITIONS -->
+							<tr>
+								<td style="width: 15%; padding:1mm 1mm 1mm 0mm;">
+									<t t-translation="on">General</t>
+								</td>
+								<td style="width: 85%; padding:1mm 1mm 1mm 0mm;">
+									<t t-translation="on">Our General Terms and Conditions apply.</t>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</t>
+		</template>
+	</data>
+</odoo>
